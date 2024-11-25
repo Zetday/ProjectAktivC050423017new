@@ -28,7 +28,7 @@ Details {{ $workshop->name }}
                     @if($workshop->is_open)
                     @if($workshop->has_started)
                     <div class="absolute top-3 left-3 flex items-center rounded-full py-3 px-5 gap-1 bg-aktiv-orange text-white z-10">
-                        <img src="assets/images/icons/timer-start.svg" class="w-6 h-6" alt="icon">
+                        <img src="{{asset('assets/images/icons/timer-start.svg')}}" class="w-6 h-6" alt="icon">
                         <span class="font-semibold">STARTED</span>
                     </div>
                     @else
@@ -39,7 +39,7 @@ Details {{ $workshop->name }}
                     @endif
                     @else
                     <div class="absolute top-3 left-3 flex items-center rounded-full py-3 px-5 gap-1 bg-aktiv-red text-white z-10">
-                        <img src="assets/images/icons/sand-timer.svg" class="w-6 h-6" alt="icon">
+                        <img src="{{asset('assets/images/icons/sand-timer.svg')}}" class="w-6 h-6" alt="icon">
                         <span class="font-semibold">CLOSED</span>
                     </div>
                     @endif

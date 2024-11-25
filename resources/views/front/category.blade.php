@@ -1,10 +1,10 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('title', 'Training Center Poliban')
 @section('content')
 <div class="h-[112px]">
     <nav class="fixed top-0 flex items-center w-full justify-between p-8 bg-white z-30">
         <a href="index.html">
-            <img src="{{asset('assets/images/logos/Logo.svg')}}')}}" class="flex shrink-0" alt="logo">
+            <img src="{{asset('assets/images/logos/Logo.svg')}}" class="flex shrink-0" alt="logo">
         </a>
         <ul class="flex items-center justify-center gap-8">
             <li class="font-medium text-aktiv-grey hover:font-semibold hover:text-aktiv-orange transition-all duration-300">
@@ -30,7 +30,7 @@
     <div class="flex flex-col gap-9">
         <div class="flex flex-col items-center gap-1">
             <h1 class="font-Neue-Plak-bold text-[32px] leading-[44.54px] capitalize">
-                {{ $category->name }}({{ $category->workshop->count()}})
+                {{ $category->name }}({{ $category->workshops->count()}})
             </h1>
             <div class="flex items-center gap-2 ">
                 <a class="font-medium text-aktiv-grey last:font-semibold last:text-aktiv-black">Homepage</a>
@@ -60,18 +60,18 @@
                             @if($itemNewWorkshop->is_open)
                             @if($itemNewWorkshop->has_started)
                             <div class="absolute top-3 left-3 flex items-center rounded-full py-3 px-5 gap-1 bg-aktiv-orange text-white z-10">
-                                <img src="{{asset('{{asset('assets/images/icons/timer-start.svg')}}')}}" class="w-6 h-6" alt="icon">
+                                <img src="{{asset('assets/images/icons/timer-start.svg')}}" class="w-6 h-6" alt="icon">
                                 <span class="font-semibold">STARTED</span>
                             </div>
                             @else
                                 <div class="absolute top-3 left-3 flex items-center rounded-full py-3 px-5 gap-1 bg-aktiv-green text-white z-10">
-                                <img src="{{asset('{{asset('assets/images/icons/medal-star.svg')}}')}}" class="w-6 h-6" alt="icon">
+                                <img src="{{asset('assets/images/icons/medal-star.svg')}}" class="w-6 h-6" alt="icon">
                                 <span class="font-semibold">OPEN</span>
                                 </div>
                             @endif
                         @else
                             <div class="absolute top-3 left-3 flex items-center rounded-full py-3 px-5 gap-1 bg-aktiv-red text-white z-10">
-                                <img src="{{asset('{{asset('assets/images/icons/sand-timer.svg')}}')}}" class="w-6 h-6" alt="icon">
+                                <img src="{{asset('assets/images/icons/sand-timer.svg')}}" class="w-6 h-6" alt="icon">
                                 <span class="font-semibold">CLOSED</span>
                             </div>
                         @endif
@@ -79,11 +79,11 @@
                     <div class="card-detail flex flex-col gap-2">
                         <div class="flex items-center gap-3">
                             <div class="flex items-center gap-1">
-                                <img src="{{asset('{{asset('assets/images/icons/calendar-2.svg')}}')}}" class="w-6 h-6 flex shrink-0" alt="icon">
+                                <img src="{{asset('assets/images/icons/calendar-2.svg')}}" class="w-6 h-6 flex shrink-0" alt="icon">
                                 <span class="font-medium text-aktiv-grey">{{ $itemNewWorkshop->started_at->format('M d, Y')}}</span>
                             </div>
                             <div class="flex items-center gap-1">
-                                <img src="{{asset('{{asset('assets/images/icons/timer.svg')}}')}}" class="w-6 h-6 flex shrink-0" alt="icon">
+                                <img src="{{asset('assets/images/icons/timer.svg')}}" class="w-6 h-6 flex shrink-0" alt="icon">
                                 <span class="font-medium text-aktiv-grey">{{ $itemNewWorkshop->time_at->format('h:i A')}}</span>
                             </div>
                         </div>
@@ -102,11 +102,13 @@
                         </p>
                         <p class="font-medium text-aktiv-grey">/person</p>
                     </div>
-                    <img src="{{asset('{{asset('assets/images/icons/arrow-right.svg')}}')}}" class="w-12 h-12 flex shrink-0" alt="icon">
+                    <img src="{{asset('assets/images/icons/arrow-right.svg')}}" class="w-12 h-12 flex shrink-0" alt="icon">
                 </div>
             </div>
-        </a>
-
+            </a>
+            @empty
+            <p class="font-medium text-aktiv-grey">Belum ada data benefit</p>
+            @endforelse
         </div>
     </div>
 </section>
